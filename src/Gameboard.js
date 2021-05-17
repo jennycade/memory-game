@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import Card from './Card';
 
-import photo from './img/cauliflower.jpeg';
-
 import artichokes from './img/artichokes.jpg';
 import asparagus from './img/asparagus.jpg';
 import avocados from './img/avocados.jpg';
@@ -40,7 +38,7 @@ import zucchini from './img/zucchini.jpg';
 
 const Gameboard = (props) => {
   // images
-  const veggies = [
+  const [veggies, setVeggies] = useState([
     {'name': 'artichokes', 'image': artichokes,},
     {'name': 'asparagus', 'image': asparagus,},
     {'name': 'avocados', 'image': avocados,},
@@ -75,14 +73,22 @@ const Gameboard = (props) => {
     {'name': 'tomatoes', 'image': tomatoes,},
     {'name': 'walnuts', 'image': walnuts,},
     {'name': 'zucchini', 'image': zucchini,},
-  ];
+  ]);
   const generateCard = () => {
     // pick a random card
-    const randomVeggie = veggies[Math.floor(Math.random() * veggies.length)];
+    const randomDraw = Math.floor(Math.random() * veggies.length);
+    const randomVeggie = veggies[randomDraw];
+
+    // really should remove it from the list
+    let newVeggies = [...veggies];
+    newVeggies.splice(randomDraw, 1);
+    // setVeggies(newVeggies); // TODO: figure out how this is creating an infinite loop!
+
     return randomVeggie;
   }
 
   let initialCards = [];
+
   for (let i=0; i<props.numCards; i++) {
     const newVeggie = generateCard();
     initialCards.push(<Card key={i} photo={ newVeggie.image } veggieName={ newVeggie.name } />);
