@@ -1,70 +1,44 @@
-# Getting Started with Create React App
+# Memory game
+An assignment from The Odin Project: https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript/lessons/memory-card
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+1. Create a new project using create-react-app.
+2. Take a little bit of time to think about how you want to implement your application, the features you want to implement, which components you need, and how to structure your application. Your application should include a scoreboard, which counts the current score, and a “Best Score”, which shows the best score you achieved thus far. You also need a couple of cards that display images and possibly informational text. There should be a function that displays the cards in a random order anytime a user clicks one. Be sure to invoke that function when the component mounts.
+3. Now that you’ve thought about the structure of your application, set up the folder structure and start creating the components. We suggest you use functional components and therefore hooks in this project.
+4. Style your application so you can show it off!
+5. As always, push the project to GitHub.
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Image credits
+Cauliflower: Photo by <a href="https://unsplash.com/@ikredenets?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Irene Kredenets</a> on <a href="https://unsplash.com/s/photos/vegetable?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+Bell pepper: Photo by <a href="https://unsplash.com/@panvojtek?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Honza Vojtek</a> on <a href="https://unsplash.com/s/photos/vegetable?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+Broccoli: Photo by <a href="https://unsplash.com/@anniespratt?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Annie Spratt</a> on <a href="https://unsplash.com/s/photos/vegetable?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+Carrots: Photo by <a href="https://unsplash.com/@jonathanpielmayer?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Jonathan Pielmayer</a> on <a href="https://unsplash.com/s/photos/vegetable?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+Spinach: Photo by <a href="https://unsplash.com/@fruitorvegetable?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Elianna Friedman</a> on <a href="https://unsplash.com/s/photos/vegetable?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+Radishes: Photo by <a href="https://unsplash.com/@markusspiske?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Markus Spiske</a> on <a href="https://unsplash.com/s/photos/vegetable?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+Peas: Photo by <a href="https://unsplash.com/@rachaelgorjestani?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Rachael Gorjestani</a> on <a href="https://unsplash.com/s/photos/vegetable?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+Tomatoes: Photo by <a href="https://unsplash.com/@stefanocarella?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">stefano carella</a> on <a href="https://unsplash.com/s/photos/vegetable?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+Garlic: Photo by <a href="https://unsplash.com/@gaellemarcel?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Gaelle Marcel</a> on <a href="https://unsplash.com/s/photos/vegetable?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+Zucchini: Photo by <a href="https://unsplash.com/@louishansel?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Louis Hansel</a> on <a href="https://unsplash.com/s/photos/vegetable?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+Purple kale: Photo by <a href="https://unsplash.com/@peymanfarmani?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Peyman Farmani</a> on <a href="https://unsplash.com/s/photos/vegetable?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+Pumpkins: Photo by <a href="https://unsplash.com/@chris_robert?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">chris robert</a> on <a href="https://unsplash.com/s/photos/vegetable?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+Potatoes: Photo by <a href="https://unsplash.com/@rodreis?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Rodrigo dos Reis</a> on <a href="https://unsplash.com/s/photos/vegetable?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+Eggplant: Photo by <a href="https://unsplash.com/@charlesdeluvio?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Charles Deluvio</a> on <a href="https://unsplash.com/s/photos/vegetable?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+Asparagus: Photo by <a href="https://unsplash.com/@khouser01?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Keegan Houser</a> on <a href="https://unsplash.com/s/photos/vegetable?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+Red chard: Photo by <a href="https://unsplash.com/@markusspiske?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Markus Spiske</a> on <a href="https://unsplash.com/s/photos/vegetable?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+Purple cauliflower: Photo by <a href="https://unsplash.com/@sheilajoy?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Sheila Joy</a> on <a href="https://unsplash.com/s/photos/vegetable?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+Beets: Photo by <a href="https://unsplash.com/@emmalejane?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Emma-Jane Hobden</a> on <a href="https://unsplash.com/s/photos/vegetable?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+Chilis: Photo by <a href="https://unsplash.com/@designerjaeger?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Eduardo Jaeger</a> on <a href="https://unsplash.com/s/photos/vegetable?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+Green beans: Photo by <a href="https://unsplash.com/@nehadeshmukh?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Neha Deshmukh</a> on <a href="https://unsplash.com/s/photos/vegetable?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+Savoy cabbage: Photo by <a href="https://unsplash.com/@hjkp?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">henry perks</a> on <a href="https://unsplash.com/s/photos/vegetable?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+Artichokes: Photo by <a href="https://unsplash.com/@michmood?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Michelle Moody</a> on <a href="https://unsplash.com/s/photos/vegetable?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+Fava beans: Photo by <a href="https://unsplash.com/@amirmasoud32?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">amirmasoud</a> on <a href="https://unsplash.com/s/photos/vegetable?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+Cucumbers: Photo by <a href="https://unsplash.com/@jonathanpielmayer?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Jonathan Pielmayer</a> on <a href="https://unsplash.com/s/photos/vegetable?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+Leeks: Photo by <a href="https://unsplash.com/@izajankowska?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Izabela Rutkowski</a> on <a href="https://unsplash.com/s/photos/vegetable?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+Squash: Photo by <a href="https://unsplash.com/@mockupgraphics?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Mockup Graphics</a> on <a href="https://unsplash.com/s/photos/vegetable?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+Lettuce: Photo by <a href="https://unsplash.com/@picoftasty?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Mae Mu</a> on <a href="https://unsplash.com/s/photos/vegetable?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+Corn: Photo by <a href="https://unsplash.com/@charlesdeluvio?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Charles Deluvio</a> on <a href="https://unsplash.com/s/photos/vegetable?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+Rhubarb: Photo by <a href="https://unsplash.com/@moniqa?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Monika Grabkowska</a> on <a href="https://unsplash.com/s/photos/vegetable?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+Okra: Photo by <a href="https://unsplash.com/@heatherbarnes?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Heather Barnes</a> on <a href="https://unsplash.com/s/photos/vegetable?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+Basil: Photo by <a href="https://unsplash.com/@heatherbarnes?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Heather Barnes</a> on <a href="https://unsplash.com/s/photos/vegetable?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+Chestnuts: Photo by <a href="https://unsplash.com/@roby54?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Roberto Patti</a> on <a href="https://unsplash.com/s/photos/vegetable?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+Walnuts: Photo by <a href="https://unsplash.com/@nordwood?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">NordWood Themes</a> on <a href="https://unsplash.com/s/photos/vegetable?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+Avocados: Photo by <a href="https://unsplash.com/@nurafnisetiyaningrum?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Nur Afni Setiyaningrum</a> on <a href="https://unsplash.com/s/photos/vegetable?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
