@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 
-import photo from './img/cauliflower.jpeg';
 
 const Card = (props) => {
+  // console.log(props.photo);
   return (
     <div className="Card">
-      <img src={photo} alt="cauliflower" />
+      <img src={props.photo} alt={ props.veggieName } />
     </div>
   );
 }
