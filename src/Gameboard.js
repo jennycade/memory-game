@@ -37,6 +37,19 @@ import walnuts from './img/walnuts.jpg';
 import zucchini from './img/zucchini.jpg';
 
 const Gameboard = (props) => {
+  // it should be state! (I think)
+
+  const setUpGameboard = (numCards) => {
+
+
+  }
+  let cardOrder = [];
+  for (let i=0; i<props.numCards; i++) {
+    cardOrder.push(i);
+  }
+
+  let initialCards = [];
+
   // images
   let veggies = [
     {'name': 'artichokes', 'image': artichokes,},
@@ -74,7 +87,7 @@ const Gameboard = (props) => {
     {'name': 'walnuts', 'image': walnuts,},
     {'name': 'zucchini', 'image': zucchini,},
   ];
-  const generateCard = () => {
+  const pickVeggie = () => {
     // pick a random card
     const randomDraw = Math.floor(Math.random() * veggies.length);
     const randomVeggie = veggies[randomDraw];
@@ -85,36 +98,38 @@ const Gameboard = (props) => {
     return randomVeggie;
   }
 
-  const shuffleCards = (cards) => {
-    let cardOrder = [];
-    for (let i=0; i<cards.length; i++) {
-      cardOrder.push(i);
+  const shuffleCards = () => {
+    let newOrder = [];
+    for (let i=0; i<initialCards.length; i++) {
+      newOrder.push(i);
     }
     // Fisher-Yates shuffle
-    let m = cardOrder.length, t, i;
+    let m = newOrder.length, t, i;
     while (m) {
       i = Math.floor(Math.random() * m--);
-      t = cardOrder[m];
-      cardOrder[m] = cardOrder[i];
-      cardOrder[i] = t;
+      t = newOrder[m];
+      newOrder[m] = newOrder[i];
+      newOrder[i] = t;
     }
-    
-    // set new Order props
-    for (let i=0; i<cards.length; i++) {
 
-      cards[i] = <Card order={cardOrder[i]} /> // nope, replaces <Card /> instead of updating it.
-    }
+    cardOrder = newOrder; // no, this makes THIS component re-render.
+    console.log('Set new card order');
+    console.log(newOrder);
 
   }
 
-  let initialCards = [];
+  const getCardOrder = (key) => {
+    console.log(`Card with key ${key} should be in spot #${cardOrder[key]}`);
+    return cardOrder[key];
+  }
+
 
   for (let i=0; i<props.numCards; i++) {
-    const newVeggie = generateCard();
-    initialCards.push(<Card key={i} order={i} shuffleCards={ () => shuffleCards(cards) } photo={ newVeggie.image } veggieName={ newVeggie.name } />);
+    const newVeggie = pickVeggie();
+    initialCards.push(<Card key={i} getCardOrder={ () => getCardOrder(i) } shuffleCards={ shuffleCards } photo={ newVeggie.image } veggieName={ newVeggie.name } />);
   }
 
-  const [cards, setCards] = useState(initialCards);
+  // const [cards, setCards] = useState(initialCards);
 
   
 
@@ -122,7 +137,7 @@ const Gameboard = (props) => {
 
   return (
     <div className="Gameboard">
-      { cards }
+      { initialCards }
     </div>
   );
 }
