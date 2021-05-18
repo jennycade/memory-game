@@ -10,10 +10,9 @@ const Card = (props) => {
   }
 
   return (
-    <div className="Card" onClick={ clickCard }>
+    <div style={{order: props.order}} className="Card" onClick={ clickCard }>
       <img src={ props.photo } alt={ props.veggieName } />
-      {/* <p>{ props.veggieName } - Clicked {numClicks} times</p> */}
-      <p>{ props.veggieName } - #{ props.order } - Clicked {numClicks} times</p>
+      <p>{ props.veggieName } - Clicked {numClicks} times</p>
     </div>
   );
 }
