@@ -38,7 +38,7 @@ import zucchini from './img/zucchini.jpg';
 
 const Gameboard = (props) => {
   // images
-  const [veggies, setVeggies] = useState([
+  let veggies = [
     {'name': 'artichokes', 'image': artichokes,},
     {'name': 'asparagus', 'image': asparagus,},
     {'name': 'avocados', 'image': avocados,},
@@ -73,16 +73,14 @@ const Gameboard = (props) => {
     {'name': 'tomatoes', 'image': tomatoes,},
     {'name': 'walnuts', 'image': walnuts,},
     {'name': 'zucchini', 'image': zucchini,},
-  ]);
+  ];
   const generateCard = () => {
     // pick a random card
     const randomDraw = Math.floor(Math.random() * veggies.length);
     const randomVeggie = veggies[randomDraw];
 
     // really should remove it from the list
-    let newVeggies = [...veggies];
-    newVeggies.splice(randomDraw, 1);
-    // setVeggies(newVeggies); // TODO: figure out how this is creating an infinite loop!
+    veggies.splice(randomDraw, 1);
 
     return randomVeggie;
   }
