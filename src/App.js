@@ -1,5 +1,4 @@
 import './App.css';
-import Gameboard from './Gameboard';
 import Scoreboard from './Scoreboard';
 import CardSubset from './CardSubset';
 

@@ -1,15 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Card from './Card';
 
 
 const Gameboard = (props) => {
 
-  const [cards, setCards] = useState(props.cards);
+  // const [cards, setCards] = useState(props.cards);
+  const cards = props.cards;
 
-  let cardOrder = [];
-  for (let i=0; i<props.numCards; i++) {
-    cardOrder.push(i);
+  let initCardOrder = [];
+  for (let i=0; i<props.cards.length; i++) {
+    initCardOrder.push(i);
   }
+
+  const [cardOrder, setCardOrder] = useState(initCardOrder);
 
   const shuffleCards = () => {
     let newOrder = [];
@@ -25,22 +28,13 @@ const Gameboard = (props) => {
       newOrder[i] = t;
     }
 
-    cardOrder = newOrder; // no, this makes THIS component re-render.
-    console.log('Set new card order');
     console.log(newOrder);
-
+    setCardOrder(newOrder);
   }
-
-  const getCardOrder = (key) => {
-    console.log(`Card with key ${key} should be in spot #${cardOrder[key]}`);
-    return cardOrder[key];
-  }
-
-  // useEffect(() => {pickCards(props.numCards)}, [props.numCards]);
 
   return (
     <div className="Gameboard">
-      { cards.map(card => <Card key={card.key} getCardOrder={ () => getCardOrder(card.key) } shuffleCards={ () => shuffleCards() } photo={ card.image } veggieName={ card.name } />) }
+      { cards.map(card => <Card key={card.key} order={cardOrder[card.key]} shuffleCards={ () => shuffleCards() } photo={ card.image } veggieName={ card.name } />) }
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 
 const Card = (props) => {
@@ -6,14 +6,14 @@ const Card = (props) => {
 
   const clickCard = () => {
     setNumClicks(numClicks + 1);
-    // props.shuffleCards(); // this only assigns new order number for THIS card.
+    props.shuffleCards();
   }
 
   return (
     <div className="Card" onClick={ clickCard }>
       <img src={ props.photo } alt={ props.veggieName } />
-      <p>{ props.veggieName } - Clicked {numClicks} times</p>
-      {/* <p>{ props.veggieName } - #{ props.getCardOrder() } - Clicked {numClicks} times</p> */}
+      {/* <p>{ props.veggieName } - Clicked {numClicks} times</p> */}
+      <p>{ props.veggieName } - #{ props.order } - Clicked {numClicks} times</p>
     </div>
   );
 }

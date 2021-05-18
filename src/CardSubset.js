@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import Gameboard from './Card';
+// import { useEffect, useState } from 'react';
+import Gameboard from './Gameboard';
 
 import artichokes from './img/artichokes.jpg';
 import asparagus from './img/asparagus.jpg';
