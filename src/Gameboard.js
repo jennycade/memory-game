@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Card from './Card';
 
 import artichokes from './img/artichokes.jpg';
@@ -37,70 +37,78 @@ import walnuts from './img/walnuts.jpg';
 import zucchini from './img/zucchini.jpg';
 
 const Gameboard = (props) => {
-  // it should be state! (I think)
+  // cards should be state! (I think)
+  const pickCards = (numCards) => { // run only on first render with useEffect(() => setUpGameboard, []);
+    let initialCards = [];
+    // images
+    let veggies = [
+      {'name': 'artichokes', 'image': artichokes,},
+      {'name': 'asparagus', 'image': asparagus,},
+      {'name': 'avocados', 'image': avocados,},
+      {'name': 'basil', 'image': basil,},
+      {'name': 'beets', 'image': beets,},
+      {'name': 'bell pepper', 'image': bellpepper,},
+      {'name': 'broccoli', 'image': broccoli,},
+      {'name': 'carrots', 'image': carrots,},
+      {'name': 'cauliflower', 'image': cauliflower,},
+      {'name': 'chestnuts', 'image': chestnuts,},
+      {'name': 'chilis', 'image': chilis,},
+      {'name': 'corn', 'image': corn,},
+      {'name': 'cucumbers', 'image': cucumbers,},
+      {'name': 'eggplant', 'image': eggplant,},
+      {'name': 'fava beans', 'image': favabeans,},
+      {'name': 'garlic', 'image': garlic,},
+      {'name': 'green beans', 'image': greenbeans,},
+      {'name': 'leeks', 'image': leeks,},
+      {'name': 'lettuce', 'image': lettuce,},
+      {'name': 'okra', 'image': okra,},
+      {'name': 'peas', 'image': peas,},
+      {'name': 'potatoes', 'image': potatoes,},
+      {'name': 'pumpkins', 'image': pumpkins,},
+      {'name': 'purple kale', 'image': purplekale,},
+      {'name': 'purple cauliflower', 'image': purplecauliflower,},
+      {'name': 'radishes', 'image': radishes,},
+      {'name': 'red chard', 'image': redchard,},
+      {'name': 'rhubarb', 'image': rhubarb,},
+      {'name': 'savoy cabbage', 'image': savoycabbage,},
+      {'name': 'spinach', 'image': spinach,},
+      {'name': 'squash', 'image': squash,},
+      {'name': 'tomatoes', 'image': tomatoes,},
+      {'name': 'walnuts', 'image': walnuts,},
+      {'name': 'zucchini', 'image': zucchini,},
+    ];
+    const pickVeggie = () => {
+      // pick a random card
+      const randomDraw = Math.floor(Math.random() * veggies.length);
+      const randomVeggie = veggies[randomDraw];
+  
+      // really should remove it from the list
+      veggies.splice(randomDraw, 1);
+  
+      return randomVeggie;
+    }
 
-  const setUpGameboard = (numCards) => {
-
+    for (let i=0; i<numCards; i++) {
+      const newVeggie = pickVeggie();
+      initialCards.push(<Card key={i} getCardOrder={ () => getCardOrder(i) } shuffleCards={ () => shuffleCards() } photo={ newVeggie.image } veggieName={ newVeggie.name } />);
+    }
 
   }
+  const [cards, setCards] = useState(pickCards(props.numCards));
+
   let cardOrder = [];
   for (let i=0; i<props.numCards; i++) {
     cardOrder.push(i);
   }
 
-  let initialCards = [];
+  
 
-  // images
-  let veggies = [
-    {'name': 'artichokes', 'image': artichokes,},
-    {'name': 'asparagus', 'image': asparagus,},
-    {'name': 'avocados', 'image': avocados,},
-    {'name': 'basil', 'image': basil,},
-    {'name': 'beets', 'image': beets,},
-    {'name': 'bell pepper', 'image': bellpepper,},
-    {'name': 'broccoli', 'image': broccoli,},
-    {'name': 'carrots', 'image': carrots,},
-    {'name': 'cauliflower', 'image': cauliflower,},
-    {'name': 'chestnuts', 'image': chestnuts,},
-    {'name': 'chilis', 'image': chilis,},
-    {'name': 'corn', 'image': corn,},
-    {'name': 'cucumbers', 'image': cucumbers,},
-    {'name': 'eggplant', 'image': eggplant,},
-    {'name': 'fava beans', 'image': favabeans,},
-    {'name': 'garlic', 'image': garlic,},
-    {'name': 'green beans', 'image': greenbeans,},
-    {'name': 'leeks', 'image': leeks,},
-    {'name': 'lettuce', 'image': lettuce,},
-    {'name': 'okra', 'image': okra,},
-    {'name': 'peas', 'image': peas,},
-    {'name': 'potatoes', 'image': potatoes,},
-    {'name': 'pumpkins', 'image': pumpkins,},
-    {'name': 'purple kale', 'image': purplekale,},
-    {'name': 'purple cauliflower', 'image': purplecauliflower,},
-    {'name': 'radishes', 'image': radishes,},
-    {'name': 'red chard', 'image': redchard,},
-    {'name': 'rhubarb', 'image': rhubarb,},
-    {'name': 'savoy cabbage', 'image': savoycabbage,},
-    {'name': 'spinach', 'image': spinach,},
-    {'name': 'squash', 'image': squash,},
-    {'name': 'tomatoes', 'image': tomatoes,},
-    {'name': 'walnuts', 'image': walnuts,},
-    {'name': 'zucchini', 'image': zucchini,},
-  ];
-  const pickVeggie = () => {
-    // pick a random card
-    const randomDraw = Math.floor(Math.random() * veggies.length);
-    const randomVeggie = veggies[randomDraw];
-
-    // really should remove it from the list
-    veggies.splice(randomDraw, 1);
-
-    return randomVeggie;
-  }
+  
+  
 
   const shuffleCards = () => {
     let newOrder = [];
-    for (let i=0; i<initialCards.length; i++) {
+    for (let i=0; i<cards.length; i++) {
       newOrder.push(i);
     }
     // Fisher-Yates shuffle
@@ -123,21 +131,11 @@ const Gameboard = (props) => {
     return cardOrder[key];
   }
 
-
-  for (let i=0; i<props.numCards; i++) {
-    const newVeggie = pickVeggie();
-    initialCards.push(<Card key={i} getCardOrder={ () => getCardOrder(i) } shuffleCards={ shuffleCards } photo={ newVeggie.image } veggieName={ newVeggie.name } />);
-  }
-
-  // const [cards, setCards] = useState(initialCards);
-
-  
-
-  
+  // useEffect(() => {pickCards(props.numCards)}, [props.numCards]);
 
   return (
     <div className="Gameboard">
-      { initialCards }
+      { cards }
     </div>
   );
 }
