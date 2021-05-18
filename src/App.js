@@ -1,12 +1,13 @@
 import './App.css';
 import Gameboard from './Gameboard';
 import Scoreboard from './Scoreboard';
+import CardSubset from './CardSubset';
 
 function App() {
   return (
     <div className="App">
       <Scoreboard />
-      <Gameboard numCards={3} />
+      <CardSubset numCards={3}/>
     </div>
   );
 }
