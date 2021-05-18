@@ -85,14 +85,38 @@ const Gameboard = (props) => {
     return randomVeggie;
   }
 
+  const shuffleCards = (cards) => {
+    let cardOrder = [];
+    for (let i=0; i<cards.length; i++) {
+      cardOrder.push(i);
+    }
+    // Fisher-Yates shuffle
+    let m = cardOrder.length, t, i;
+    while (m) {
+      i = Math.floor(Math.random() * m--);
+      t = cardOrder[m];
+      cardOrder[m] = cardOrder[i];
+      cardOrder[i] = t;
+    }
+    
+    // set new Order props
+    for (let i=0; i<cards.length; i++) {
+
+      cards[i] = <Card order={cardOrder[i]} /> // nope, replaces <Card /> instead of updating it.
+    }
+
+  }
+
   let initialCards = [];
 
   for (let i=0; i<props.numCards; i++) {
     const newVeggie = generateCard();
-    initialCards.push(<Card key={i} photo={ newVeggie.image } veggieName={ newVeggie.name } />);
+    initialCards.push(<Card key={i} order={i} shuffleCards={ () => shuffleCards(cards) } photo={ newVeggie.image } veggieName={ newVeggie.name } />);
   }
 
   const [cards, setCards] = useState(initialCards);
+
+  
 
   
 

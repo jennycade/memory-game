@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <Scoreboard />
-      <Gameboard numCards={30} />
+      <Gameboard numCards={3} />
     </div>
   );
 }
