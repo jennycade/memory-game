@@ -5,8 +5,15 @@ const Card = (props) => {
   const [numClicks, setNumClicks] = useState(0);
 
   const clickCard = () => {
-    setNumClicks(numClicks + 1);
-    props.shuffleCards();
+    if (numClicks === 0) {
+      // up the score
+      props.scorePoint();
+      setNumClicks(numClicks + 1);
+      props.shuffleCards();
+    } else {
+      // lose the game!
+      props.loseGame();
+    }
   }
 
   return (

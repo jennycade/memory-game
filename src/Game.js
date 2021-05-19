@@ -36,7 +36,8 @@ import tomatoes from './img/tomatoes.jpg';
 import walnuts from './img/walnuts.jpg';
 import zucchini from './img/zucchini.jpg';
 
-const CardSubset = (props) => {
+const Game = (props) => {
+
   let cards = [];
 
   // images
@@ -95,10 +96,10 @@ const CardSubset = (props) => {
   
 
   return (
-    <div className="CardSubset">
-      <Gameboard cards={cards} />
+    <div className="Game">
+      <Gameboard cards={cards} loseGame={props.loseGame} />
     </div>
   );
 }
 
-export default CardSubset;
+export default Game;

@@ -1,8 +1,14 @@
 import { useState } from 'react';
 import Card from './Card';
+import Scoreboard from './Scoreboard';
 
 
 const Gameboard = (props) => {
+  const [score, setScore] = useState(0);
+  const scorePoint = () => {
+    setScore(score + 1);
+    // score += 1;
+  }
 
   // const [cards, setCards] = useState(props.cards);
   const cards = props.cards;
@@ -34,7 +40,10 @@ const Gameboard = (props) => {
 
   return (
     <div className="Gameboard">
-      { cards.map(card => <Card key={card.key} order={cardOrder[card.key]} shuffleCards={ () => shuffleCards() } photo={ card.image } veggieName={ card.name } />) }
+      <Scoreboard score={ score } />
+      <div className="Cards">
+        { cards.map(card => <Card key={card.key} order={cardOrder[card.key]} shuffleCards={ () => shuffleCards() } photo={ card.image } veggieName={ card.name } scorePoint ={ scorePoint } loseGame={props.loseGame} />) }
+      </div>
     </div>
   );
 }
