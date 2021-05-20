@@ -112,7 +112,7 @@ const Game = (props) => {
 
   return (
     <div className="Gameboard">
-      <Scoreboard score={ score } />
+      <Scoreboard score={ score } max={props.numCards} />
       <div className="Cards">
         {console.table(cards)}
         { cards.map(card => <Card key={card.key} photo={ card.image } veggieName={ card.name } scorePoint={scorePoint} newGame={newGame} gameNumber={gameNumber} />) }
