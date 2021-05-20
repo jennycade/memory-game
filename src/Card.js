@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 
 
 const Card = (props) => {
-  console.log('I am a line in Card.js. I am being run.');
 
   const [clicks, setClicks] = useState(0);
 
@@ -14,6 +13,7 @@ const Card = (props) => {
       // score point
       setClicks(clicks + 1);
       props.scorePoint();
+      props.shuffleCards();
     } else {
       props.newGame(3);
     }
@@ -26,7 +26,7 @@ const Card = (props) => {
   return (
     <div style={{order: props.order}} className="Card" onClick={clickCard}>
       <img src={ props.photo } alt={ props.veggieName } />
-      <p>{ props.veggieName } - Clicked { clicks } times</p>
+      <p>{ props.veggieName }</p>
     </div>
   );
 }

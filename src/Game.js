@@ -39,7 +39,6 @@ import walnuts from './img/walnuts.jpg';
 import zucchini from './img/zucchini.jpg';
 
 const Game = (props) => {
-  console.log('I am a line in Game.js. I am being run.');
 
   const [score, setScore] = useState(0);
   const [gameNumber, setGameNumber] = useState(1);
@@ -98,24 +97,51 @@ const Game = (props) => {
 
   }
 
+  const orderCards = (numCards) => {
+    let initCardOrder = [];
+    for (let i=0; i<numCards; i++) {
+      initCardOrder.push(i);
+    }
+    return initCardOrder;
+  }
+
   const [cards, setCards] = useState(drawCards(props.numCards));
+  const [cardOrder, setCardOrder] = useState(orderCards(props.numCards));
 
   const newGame = (numCards) => {
     setScore(0);
     setGameNumber(gameNumber + 1);
     setCards(drawCards(numCards));
+    orderCards(numCards);
   }
 
   const scorePoint = () => {
     setScore(score + 1);
   }
 
+  const shuffleCards = () => {
+    console.log('SHUFFLE!');
+    let newOrder = [];
+    for (let i=0; i<cards.length; i++) {
+      newOrder.push(i);
+    }
+    // Fisher-Yates shuffle
+    let m = newOrder.length, t, i;
+    while (m) {
+      i = Math.floor(Math.random() * m--);
+      t = newOrder[m];
+      newOrder[m] = newOrder[i];
+      newOrder[i] = t;
+    }
+
+    setCardOrder(newOrder);
+  }
+
   return (
     <div className="Gameboard">
       <Scoreboard score={ score } max={props.numCards} />
       <div className="Cards">
-        {console.table(cards)}
-        { cards.map(card => <Card key={card.key} photo={ card.image } veggieName={ card.name } scorePoint={scorePoint} newGame={newGame} gameNumber={gameNumber} />) }
+        { cards.map(card => <Card key={card.key} order={cardOrder[card.key]} photo={ card.image } veggieName={ card.name } shuffleCards={shuffleCards} scorePoint={scorePoint} newGame={newGame} gameNumber={gameNumber} />) }
       </div>
     </div>
   );
