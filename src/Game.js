@@ -38,77 +38,75 @@ import walnuts from './img/walnuts.jpg';
 import zucchini from './img/zucchini.jpg';
 
 const Game = (props) => {
-
-  const [cards, setCards] = useState([]); // TODO: totally replace cards with a new game.
-  // TODO: find out why this is assigning new veggies but not replacing the <Card>s
-
-  let veggies = [
-    {'name': 'artichokes', 'image': artichokes,},
-    {'name': 'asparagus', 'image': asparagus,},
-    {'name': 'avocados', 'image': avocados,},
-    {'name': 'basil', 'image': basil,},
-    {'name': 'beets', 'image': beets,},
-    {'name': 'bell pepper', 'image': bellpepper,},
-    {'name': 'broccoli', 'image': broccoli,},
-    {'name': 'carrots', 'image': carrots,},
-    {'name': 'cauliflower', 'image': cauliflower,},
-    {'name': 'chestnuts', 'image': chestnuts,},
-    {'name': 'chilis', 'image': chilis,},
-    {'name': 'corn', 'image': corn,},
-    {'name': 'cucumbers', 'image': cucumbers,},
-    {'name': 'eggplant', 'image': eggplant,},
-    {'name': 'fava beans', 'image': favabeans,},
-    {'name': 'garlic', 'image': garlic,},
-    {'name': 'green beans', 'image': greenbeans,},
-    {'name': 'leeks', 'image': leeks,},
-    {'name': 'lettuce', 'image': lettuce,},
-    {'name': 'okra', 'image': okra,},
-    {'name': 'peas', 'image': peas,},
-    {'name': 'potatoes', 'image': potatoes,},
-    {'name': 'pumpkins', 'image': pumpkins,},
-    {'name': 'purple kale', 'image': purplekale,},
-    {'name': 'purple cauliflower', 'image': purplecauliflower,},
-    {'name': 'radishes', 'image': radishes,},
-    {'name': 'red chard', 'image': redchard,},
-    {'name': 'rhubarb', 'image': rhubarb,},
-    {'name': 'savoy cabbage', 'image': savoycabbage,},
-    {'name': 'spinach', 'image': spinach,},
-    {'name': 'squash', 'image': squash,},
-    {'name': 'tomatoes', 'image': tomatoes,},
-    {'name': 'walnuts', 'image': walnuts,},
-    {'name': 'zucchini', 'image': zucchini,},
-  ];
-  const pickVeggie = () => {
-    // pick a random card
-    const randomDraw = Math.floor(Math.random() * veggies.length);
-    const randomVeggie = veggies[randomDraw];
-
-    // remove it from the list
-    veggies.splice(randomDraw, 1);
-
-    return randomVeggie;
-  }
   console.log('I am a line in Game.js. I am being run.');
 
   const drawCards = (numCards) => {
     let newCards = [];
+    let veggies = [
+      {'name': 'artichokes', 'image': artichokes,},
+      {'name': 'asparagus', 'image': asparagus,},
+      {'name': 'avocados', 'image': avocados,},
+      {'name': 'basil', 'image': basil,},
+      {'name': 'beets', 'image': beets,},
+      {'name': 'bell pepper', 'image': bellpepper,},
+      {'name': 'broccoli', 'image': broccoli,},
+      {'name': 'carrots', 'image': carrots,},
+      {'name': 'cauliflower', 'image': cauliflower,},
+      {'name': 'chestnuts', 'image': chestnuts,},
+      {'name': 'chilis', 'image': chilis,},
+      {'name': 'corn', 'image': corn,},
+      {'name': 'cucumbers', 'image': cucumbers,},
+      {'name': 'eggplant', 'image': eggplant,},
+      {'name': 'fava beans', 'image': favabeans,},
+      {'name': 'garlic', 'image': garlic,},
+      {'name': 'green beans', 'image': greenbeans,},
+      {'name': 'leeks', 'image': leeks,},
+      {'name': 'lettuce', 'image': lettuce,},
+      {'name': 'okra', 'image': okra,},
+      {'name': 'peas', 'image': peas,},
+      {'name': 'potatoes', 'image': potatoes,},
+      {'name': 'pumpkins', 'image': pumpkins,},
+      {'name': 'purple kale', 'image': purplekale,},
+      {'name': 'purple cauliflower', 'image': purplecauliflower,},
+      {'name': 'radishes', 'image': radishes,},
+      {'name': 'red chard', 'image': redchard,},
+      {'name': 'rhubarb', 'image': rhubarb,},
+      {'name': 'savoy cabbage', 'image': savoycabbage,},
+      {'name': 'spinach', 'image': spinach,},
+      {'name': 'squash', 'image': squash,},
+      {'name': 'tomatoes', 'image': tomatoes,},
+      {'name': 'walnuts', 'image': walnuts,},
+      {'name': 'zucchini', 'image': zucchini,},
+    ];
+
+
     for (let i=0; i<numCards; i++) {
-      const newVeggie = pickVeggie();
-      newCards.push({...newVeggie, 'key': i});
+        // pick a random card
+      const randomDraw = Math.floor(Math.random() * veggies.length);
+      const randomVeggie = veggies[randomDraw];
+
+      // remove it from the list
+      veggies.splice(randomDraw, 1);
+
+      newCards.push({...randomVeggie, 'key': i});
     }
-    setCards(newCards);
+
+    return newCards;
+
+    
   }
 
-  useEffect(() => {
-    drawCards(props.numCards);
-  }, [props.gameStatus]);
-  
 
-  
+  const [cards, setCards] = useState(drawCards(props.numCards)); // TODO: totally replace cards with a new game.
+  // TODO: find out why this is assigning new veggies but not replacing the <Card>s
+
+  const newGame = (numCards) => {
+    setCards(drawCards(numCards));
+  }
 
   return (
     <div className="Game">
-      <Gameboard cards={cards} loseGame={props.loseGame} />
+      <Gameboard cards={cards} newGame={ newGame } />
     </div>
   );
 }
