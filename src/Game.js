@@ -120,7 +120,6 @@ const Game = (props) => {
   }
 
   const shuffleCards = () => {
-    console.log('SHUFFLE!');
     let newOrder = [];
     for (let i=0; i<cards.length; i++) {
       newOrder.push(i);
@@ -139,7 +138,7 @@ const Game = (props) => {
 
   return (
     <div className="Gameboard">
-      <Scoreboard score={ score } max={props.numCards} />
+      <Scoreboard score={ score } max={props.numCards} /> { /* TODO: Make props.numCards update when it's supposed to */ }
       <div className="Cards">
         { cards.map(card => <Card key={card.key} order={cardOrder[card.key]} photo={ card.image } veggieName={ card.name } shuffleCards={shuffleCards} scorePoint={scorePoint} newGame={newGame} gameNumber={gameNumber} />) }
       </div>

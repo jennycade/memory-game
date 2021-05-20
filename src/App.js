@@ -4,7 +4,7 @@ import Game from './Game';
 
 function App() {
   const [display, setDisplay] = useState('game');
-  const [numCards, setNumCards] = useState(3);
+  const [numCards, setNumCards] = useState(3); // TODO: when game is lost, go back to user's chosen number of cards
   const [userInput, setUserInput] = useState(numCards);
   const [message, setMessage] = useState('');
 
