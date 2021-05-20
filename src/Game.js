@@ -1,5 +1,6 @@
 // import { useEffect, useState } from 'react';
 import Gameboard from './Gameboard';
+import { useEffect, useState } from 'react';
 
 import artichokes from './img/artichokes.jpg';
 import asparagus from './img/asparagus.jpg';
@@ -38,9 +39,9 @@ import zucchini from './img/zucchini.jpg';
 
 const Game = (props) => {
 
-  let cards = [];
+  const [cards, setCards] = useState([]); // TODO: totally replace cards with a new game.
+  // TODO: find out why this is assigning new veggies but not replacing the <Card>s
 
-  // images
   let veggies = [
     {'name': 'artichokes', 'image': artichokes,},
     {'name': 'asparagus', 'image': asparagus,},
@@ -87,11 +88,21 @@ const Game = (props) => {
 
     return randomVeggie;
   }
+  console.log('I am a line in Game.js. I am being run.');
 
-  for (let i=0; i<props.numCards; i++) {
-    const newVeggie = pickVeggie();
-    cards.push({...newVeggie, 'key': i});
+  const drawCards = (numCards) => {
+    let newCards = [];
+    for (let i=0; i<numCards; i++) {
+      const newVeggie = pickVeggie();
+      newCards.push({...newVeggie, 'key': i});
+    }
+    setCards(newCards);
   }
+
+  useEffect(() => {
+    drawCards(props.numCards);
+  }, [props.gameStatus]);
+  
 
   
 

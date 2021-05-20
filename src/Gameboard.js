@@ -37,12 +37,13 @@ const Gameboard = (props) => {
     console.log(newOrder);
     setCardOrder(newOrder);
   }
+  console.log('I am a line in Gameboard.js. I am being run.');
 
   return (
     <div className="Gameboard">
       <Scoreboard score={ score } />
       <div className="Cards">
-        { cards.map(card => <Card key={card.key} order={cardOrder[card.key]} shuffleCards={ () => shuffleCards() } photo={ card.image } veggieName={ card.name } scorePoint ={ scorePoint } loseGame={props.loseGame} />) }
+        { cards.map(card => <Card key={card.key} order={cardOrder[card.key]} shuffleCards={ () => shuffleCards() } photo={ card.image } veggieName={ card.name } scorePoint ={ scorePoint } loseGame={props.loseGame} numClicks={0} />) }
       </div>
     </div>
   );
