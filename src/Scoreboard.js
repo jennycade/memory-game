@@ -2,11 +2,18 @@ const Scoreboard = (props) => {
 
   const drawProgressBar = (score, max) => {
     let progressBar = '';
-    for (let i=0; i<score; i++) {
-      progressBar += '█';
+    if (score === max) {
+      for (let i=0; i<score; i++) {
+        progressBar += '⭐️';
+      }
     }
-    for (let i=0; i<max-score; i++) {
-      progressBar += '░';
+    else {
+      for (let i=0; i<score; i++) {
+        progressBar += '█';
+      }
+      for (let i=0; i<max-score; i++) {
+        progressBar += '░';
+      }
     }
     return progressBar;
   }
