@@ -138,9 +138,9 @@ const Game = (props) => {
 
   return (
     <div className="Gameboard">
-      <Scoreboard score={ score } max={props.numCards} /> { /* TODO: Make props.numCards update when it's supposed to */ }
+      <Scoreboard score={ score } max={props.numCards} />
       <div className="Cards">
-        { cards.map(card => <Card key={card.key} order={cardOrder[card.key]} photo={ card.image } veggieName={ card.name } shuffleCards={shuffleCards} scorePoint={scorePoint} newGame={newGame} gameNumber={gameNumber} />) }
+        { cards.map(card => <Card key={card.key} order={cardOrder[card.key]} photo={ card.image } veggieName={ card.name } shuffleCards={shuffleCards} scorePoint={scorePoint} newGame={() => {newGame(props.numCards)}} gameNumber={gameNumber} />) }
       </div>
     </div>
   );
